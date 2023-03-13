@@ -1,0 +1,21 @@
+version: '1'
+
+services:
+  postgresql:
+    image: postgres
+    container_name: rota-v2
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_HOST=localhost
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DATABASE=rota-v2
+    command: postgres
+    restart: always
+
+  redis:
+    image: redis:alpine3.14
+    container_name: redis-rota-v2
+    ports:
+      - '6379-6379'
