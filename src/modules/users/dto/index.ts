@@ -1,34 +1,68 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import {
+  IsEmail,
+  IsNumber,
+  IsPhoneNumber,
+  IsString,
+  Length,
+} from 'class-validator';
 
 export class CreateUserDTO {
   @ApiProperty()
-  @IsString()
-  firstName: string;
-
-  @ApiProperty()
-  @IsString()
-  userName: string;
-
-  @ApiProperty()
-  @IsString()
+  @IsEmail(undefined, { message: 'Неверная почта' })
   email: string;
 
   @ApiProperty()
-  @IsString()
+  @Length(6, 32, { message: 'Пароль должен содержать не менее 6 символов' })
   password: string;
+
+  @ApiProperty()
+  @Length(6, 42, {
+    message:
+      'Ф.И.О. / название организации должно содержать не менее 6 символов',
+  })
+  fullName: string;
+
+  @ApiProperty()
+  @IsString()
+  phoneNumber: string;
+
+  @ApiProperty()
+  @Length(12)
+  address: string;
+
+  @ApiProperty()
+  @IsString()
+  legalForm: string;
+
+  @ApiProperty()
+  @IsString()
+  kindOfActivity: string;
 }
 
 export class UpdateUserDTO {
   @ApiProperty()
-  @IsString()
-  firstName: string;
-
-  @ApiProperty()
-  @IsString()
-  userName: string;
-
-  @ApiProperty()
-  @IsString()
+  @IsEmail(undefined, { message: 'Неверная почта' })
   email: string;
+
+  @ApiProperty()
+  @Length(6, 42, {
+    message:
+      'Ф.И.О. / название организации должно содержать не менее 6 символов',
+  })
+  fullName: string;
+
+  @ApiProperty()
+  @IsString()
+  phoneNumber: string;
+
+  @ApiProperty()
+  @Length(12)
+  address: string;
+
+  @ApiProperty()
+  legalForm: string;
+
+  @ApiProperty()
+  kindOfActivity: string;
 }

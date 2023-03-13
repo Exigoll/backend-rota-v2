@@ -39,10 +39,13 @@ export class UsersService {
     try {
       dto.password = await this.hashPassword(dto.password);
       await this.userRepository.create({
-        firstName: dto.firstName,
-        userName: dto.userName,
         email: dto.email,
         password: dto.password,
+        fullName: dto.fullName,
+        phoneNumber: dto.phoneNumber,
+        address: dto.address,
+        legalForm: dto.legalForm,
+        kindOfActivity: dto.kindOfActivity,
       });
       return dto;
     } catch (e) {
