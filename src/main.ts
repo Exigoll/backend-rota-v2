@@ -6,14 +6,18 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from '@/modules/app/app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    cors: {
+      origin: ['http://localhost:5173'],
+    },
+  });
   const configService = app.get(ConfigService);
   const port = configService.get('port');
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
-    .setTitle('lesson api')
-    .setDescription('This api for lesson')
+    .setTitle('rota api')
+    .setDescription('This api for rota')
     .setVersion('1.0')
     .addTag('API')
     .build();

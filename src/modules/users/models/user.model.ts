@@ -5,16 +5,25 @@ import { Product } from '@/modules/products/models/products.model';
 @Table
 export class User extends Model {
   @Column
-  firstName: string;
-
-  @Column
-  userName: string;
-
-  @Column
   email: string;
 
   @Column
   password: string;
+
+  @Column
+  fullName: string;
+
+  @Column
+  phoneNumber: string;
+
+  @Column
+  address: string;
+
+  @Column
+  legalForm: string;
+
+  @Column
+  kindOfActivity: string;
 
   @HasMany(() => Product, {
     onDelete: 'CASCADE',
