@@ -8,7 +8,7 @@ export const users = [
     picture: 'http://placehold.it/32x32',
     age: 30,
     eyeColor: 'brown',
-    name: 'Crystal Meyers',
+    name: 'Crystals Meyers',
     gender: 'female',
     company: 'GEEKULAR',
     email: 'crystalmeyers@geekular.com',
