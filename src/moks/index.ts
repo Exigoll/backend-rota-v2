@@ -4,7 +4,7 @@ export const users = [
     index: 0,
     guid: '2e2f7aff-65dd-4133-8844-302cc7ee84ec',
     isActive: true,
-    balance: '$3,634.25',
+    balance: '$3,634.252',
     picture: 'http://placehold.it/32x32',
     age: 30,
     eyeColor: 'brown',
