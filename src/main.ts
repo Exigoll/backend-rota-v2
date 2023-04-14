@@ -8,7 +8,8 @@ import { AppModule } from '@/modules/app/app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     cors: {
-      origin: ['http://45.141.76.28:4173'],
+      origin: ['http://45.141.76.28:5174'],
+      //origin: ['http://192.168.99.1:5174'],
     },
   });
   const configService = app.get(ConfigService);
