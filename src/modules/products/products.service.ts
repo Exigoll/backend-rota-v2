@@ -28,6 +28,16 @@ export class ProductService {
     }
   }
 
+  async getUserAssets(userId: number): Promise<Product[]> {
+    try {
+      return this.productsRepository.findAll({
+        where: { user: userId },
+      });
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
   async deleteAsset(userId: number, article: string): Promise<boolean> {
     try {
       await this.productsRepository.destroy({
