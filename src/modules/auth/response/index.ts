@@ -18,6 +18,12 @@ class UserResponse {
   fullName: string;
 
   @ApiProperty()
+  @Length(5, 20, {
+    message: 'Имя пользователя должно содержать не менее 5 символов',
+  })
+  userName: string;
+
+  @ApiProperty()
   @IsString()
   phoneNumber: string;
 

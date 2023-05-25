@@ -2,12 +2,12 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import * as bcrypt from 'bcrypt';
 
+import { AuthUserResponse } from '@/modules/auth/response/index';
 import { Product } from '@/modules/products/models/products.model';
 import { TokenService } from '@/modules/token/token.service';
 
 import { AppError } from '@/common/constants/errors';
 
-import { AuthUserResponse } from './../auth/response/index';
 import { CreateUserDTO, UpdatePasswordDTO, UpdateUserDTO } from './dto/index';
 import { User } from './models/user.model';
 
@@ -61,6 +61,7 @@ export class UsersService {
         email: dto.email,
         password: dto.password,
         fullName: dto.fullName,
+        userName: dto.userName,
         phoneNumber: dto.phoneNumber,
         address: dto.address,
         legalForm: dto.legalForm,

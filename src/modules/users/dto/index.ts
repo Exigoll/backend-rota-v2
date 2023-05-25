@@ -18,6 +18,12 @@ export class CreateUserDTO {
   fullName: string;
 
   @ApiProperty()
+  @Length(5, 20, {
+    message: 'Имя пользователя должно содержать не менее 5 символов',
+  })
+  userName: string;
+
+  @ApiProperty()
   @IsString()
   phoneNumber: string;
 
@@ -45,6 +51,12 @@ export class UpdateUserDTO {
       'Ф.И.О. / название организации должно содержать не менее 6 символов',
   })
   fullName: string;
+
+  @ApiProperty()
+  @Length(5, 20, {
+    message: 'Имя пользователя должно содержать не менее 5 символов',
+  })
+  userName: string;
 
   @ApiProperty()
   @IsString()
