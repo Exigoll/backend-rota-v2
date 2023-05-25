@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Delete,
+  Get,
   Post,
   Query,
   Req,
@@ -12,8 +13,9 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '@/guards/jwt-guard';
 
 import { ProductDTO } from './dto';
+import { Product } from './models/products.model';
 import { ProductService } from './products.service';
-import { CreateProductResponse } from './response';
+import { CreateProductResponse, GetUserAssetsResponse } from './response';
 
 @Controller('products')
 export class ProductController {
@@ -29,6 +31,18 @@ export class ProductController {
   ): Promise<CreateProductResponse> {
     const user = request.user;
     return this.productService.createAsset(user, assetDto);
+  }
+
+  @ApiTags('API')
+  @ApiResponse({
+    status: 200,
+    type: GetUserAssetsResponse,
+  })
+  @UseGuards(JwtAuthGuard)
+  @Get('get-elements')
+  getUserAssets(@Req() request): Promise<Product[]> {
+    const user = request.user;
+    return this.productService.getUserAssets(user.id);
   }
 
   @ApiTags('API')

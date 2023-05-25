@@ -18,3 +18,33 @@ export class CreateProductResponse {
   @IsString()
   article: string;
 }
+
+export class GetUserAssetsResponse {
+  @ApiProperty()
+  @IsNumber()
+  id: number;
+
+  @ApiProperty()
+  @IsString()
+  brand: string;
+
+  @ApiProperty()
+  @IsString()
+  descr: string;
+
+  @ApiProperty()
+  @IsString()
+  article: string;
+
+  @ApiProperty()
+  @IsNumber()
+  createAt: string;
+
+  @ApiProperty()
+  @IsNumber()
+  updateAt: string;
+
+  @ApiProperty()
+  @IsNumber()
+  user: number;
+}
