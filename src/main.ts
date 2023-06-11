@@ -16,7 +16,7 @@ async function bootstrap() {
       ],
       credentials: true,
       methods: ['GET', 'POST'],
-      //allowedHeaders: ['Content-Type'],
+      allowedHeaders: ['Content-Type'],
     },
   });
   const configService = app.get(ConfigService);
