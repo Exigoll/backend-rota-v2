@@ -10,6 +10,7 @@ async function bootstrap() {
     cors: {
       origin: [
         'http://rotazap.ru',
+        'http://rotazap.ru/auth/register',
         'http://www.rotazap.ru',
         'https://www.rotazap.ru',
         'https://rotazap.ru',
