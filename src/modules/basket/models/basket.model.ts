@@ -2,17 +2,23 @@ import { Column, ForeignKey, Model, Table } from 'sequelize-typescript';
 
 import { User } from '@/modules/users/models/user.model';
 
+@Table({
+  timestamps: false,
+})
 @Table
-export class Product extends Model {
+export class Basket extends Model {
   @ForeignKey(() => User)
   user: User;
 
   @Column
-  brand: string;
+  owner_sku_id: string;
 
   @Column
-  descr: string;
+  qty: string;
 
   @Column
-  article: string;
+  price: string;
+
+  @Column
+  supplier: string;
 }

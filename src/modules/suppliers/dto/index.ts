@@ -1,16 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 
-export class ProductDTO {
+export class SuppliersDTO {
   @ApiProperty()
   @IsString()
-  brand: string;
+  id: string;
 
   @ApiProperty()
   @IsString()
-  descr: string;
-
-  @ApiProperty()
-  @IsString()
-  article: string;
+  stock: boolean;
 }

@@ -1,48 +1,48 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber, IsString } from 'class-validator';
 
-export class CreateProductResponse {
+export class CreateBasketResponse {
   @ApiProperty()
   @IsNumber()
   user: number;
 
   @ApiProperty()
   @IsString()
-  brand: string;
+  owner_sku_id: string;
 
   @ApiProperty()
   @IsString()
-  descr: string;
+  qty: string;
 
   @ApiProperty()
   @IsString()
-  article: string;
+  price: string;
+
+  @ApiProperty()
+  @IsString()
+  supplier: string;
 }
 
-export class GetUserAssetsResponse {
+export class GetUserBasketResponse {
   @ApiProperty()
   @IsNumber()
   id: number;
 
   @ApiProperty()
   @IsString()
-  brand: string;
+  owner_sku_id: string;
 
   @ApiProperty()
   @IsString()
-  descr: string;
+  qty: string;
 
   @ApiProperty()
   @IsString()
-  article: string;
+  price: string;
 
   @ApiProperty()
-  @IsNumber()
-  createAt: string;
-
-  @ApiProperty()
-  @IsNumber()
-  updateAt: string;
+  @IsString()
+  supplier: string;
 
   @ApiProperty()
   @IsNumber()
