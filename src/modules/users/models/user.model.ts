@@ -1,6 +1,15 @@
-import { Column, HasMany, Model, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  ForeignKey,
+  HasMany,
+  Model,
+  Table,
+} from 'sequelize-typescript';
 
-import { Product } from '@/modules/products/models/products.model';
+import { Basket } from '@/modules/basket/models/basket.model';
+import { Orders } from '@/modules/orders/models/orders.model';
+import { PriceLists } from '@/modules/price-lists/models/price-lists.model';
 
 @Table
 export class User extends Model {
@@ -28,9 +37,21 @@ export class User extends Model {
   @Column
   kindOfActivity: string;
 
-  @HasMany(() => Product, {
+  @ForeignKey(() => PriceLists)
+  @Column
+  priceListId: string;
+
+  @BelongsTo(() => PriceLists)
+  priceList: PriceLists;
+
+  @HasMany(() => Basket, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  product: Product[];
+  basket: Basket[];
+
+  @HasMany(() => Orders, {
+    onUpdate: 'CASCADE',
+  })
+  orders: Orders[];
 }
