@@ -10,6 +10,14 @@ import { BrandsModule } from '@/modules/brands/brands.module';
 import { Brands } from '@/modules/brands/models/brands.model';
 import { OfferPrices } from '@/modules/offer-prices/models/offer-prices.model';
 import { OfferPricesModule } from '@/modules/offer-prices/offer-prices.module';
+import { OrderLinesStatus } from '@/modules/order-lines-status/models/order-lines-status';
+import { OrderLinesStatusModule } from '@/modules/order-lines-status/order-lines-status.module';
+import { OrderLines } from '@/modules/order-lines/models/order-lines.model';
+import { OrderLinesModule } from '@/modules/order-lines/order-lines.module';
+import { OrderStatus } from '@/modules/order-status/models/order-status.model';
+import { OrderStatusModule } from '@/modules/order-status/order-status.module';
+import { Orders } from '@/modules/orders/models/orders.model';
+import { OrdersModule } from '@/modules/orders/orders.module';
 import { PriceLists } from '@/modules/price-lists/models/price-lists.model';
 import { PriceListsModule } from '@/modules/price-lists/price-lists.module';
 import { SkuNames } from '@/modules/sku-names/models/sku-names.model';
@@ -55,6 +63,10 @@ import { AppService } from './app.service';
           SupplierOffers,
           OfferPrices,
           PriceLists,
+          Orders,
+          OrderStatus,
+          OrderLinesStatus,
+          OrderLines,
         ],
       }),
     }),
@@ -69,6 +81,10 @@ import { AppService } from './app.service';
     SupplierOffersModule,
     OfferPricesModule,
     PriceListsModule,
+    OrdersModule,
+    OrderStatusModule,
+    OrderLinesStatusModule,
+    OrderLinesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
