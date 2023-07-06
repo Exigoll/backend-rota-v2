@@ -1,14 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class SkuDTO {
   @ApiProperty()
-  @IsString()
-  id: string;
-
-  @ApiProperty()
-  @IsString()
-  owner_brand_id: string;
+  @IsNumber()
+  owner_brand_id: number;
 
   @ApiProperty()
   @IsString()

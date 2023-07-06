@@ -1,13 +1,12 @@
-import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
 
 @Table({
   timestamps: false,
 })
 export class PriceLists extends Model {
-  @PrimaryKey
-  @Column
-  id: string;
+  @Column({ type: DataType.INTEGER, autoIncrement: true, primaryKey: true })
+  id: number;
 
-  @Column
+  @Column({ type: DataType.STRING })
   name: string;
 }

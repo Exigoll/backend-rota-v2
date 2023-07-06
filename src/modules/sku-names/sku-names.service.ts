@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
+import { SkuNamesDTO } from './dto';
 import { SkuNames } from './models/sku-names.model';
 import { SkuNamesResponse } from './response';
 
@@ -11,15 +12,43 @@ export class SkuNamesService {
     private readonly skuNamesRepository: typeof SkuNames,
   ) {}
 
-  async createSkuNames(dto): Promise<SkuNamesResponse> {
+  async createSkuNames(dto: Partial<SkuNamesDTO>): Promise<SkuNames> {
     try {
-      const skuNames = await this.skuNamesRepository.create(dto);
-      return {
-        owner_sku_id: skuNames.owner_sku_id,
-        name: skuNames.name,
-      };
+      const skuName = await this.skuNamesRepository.create(dto);
+      return skuName;
     } catch (e) {
-      throw new Error(e);
+      throw new Error('Failed to create SkuName');
+    }
+  }
+
+  async getSkuNameById(id: number): Promise<SkuNames> {
+    try {
+      const skuName = await this.skuNamesRepository.findByPk(id);
+      if (!skuName) {
+        throw new Error('SkuName not found');
+      }
+      return skuName;
+    } catch (e) {
+      throw new Error('Failed to get SkuName by ID');
+    }
+  }
+
+  async updateSkuName(id: number, dto: SkuNamesDTO): Promise<SkuNames> {
+    try {
+      const skuName = await this.getSkuNameById(id);
+      await skuName.update(dto);
+      return skuName;
+    } catch (e) {
+      throw new Error('Failed to update SkuName');
+    }
+  }
+
+  async deleteSkuName(id: number): Promise<void> {
+    try {
+      const skuName = await this.getSkuNameById(id);
+      await skuName.destroy();
+    } catch (e) {
+      throw new Error('Failed to delete SkuName');
     }
   }
 }

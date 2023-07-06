@@ -1,26 +1,26 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber, IsString } from 'class-validator';
+import { IsNumber } from 'class-validator';
 
 export class CreateBasketResponse {
   @ApiProperty()
   @IsNumber()
-  user: number;
+  owner_user_id: number;
 
   @ApiProperty()
-  @IsString()
-  owner_sku_id: string;
+  @IsNumber()
+  owner_sku_id: number;
 
   @ApiProperty()
-  @IsString()
-  qty: string;
+  @IsNumber()
+  qty: number;
 
   @ApiProperty()
-  @IsString()
-  price: string;
+  @IsNumber()
+  price: number;
 
   @ApiProperty()
-  @IsString()
-  supplier: string;
+  @IsNumber()
+  supplier_id: number;
 }
 
 export class GetUserBasketResponse {
@@ -29,22 +29,22 @@ export class GetUserBasketResponse {
   id: number;
 
   @ApiProperty()
-  @IsString()
-  owner_sku_id: string;
-
-  @ApiProperty()
-  @IsString()
-  qty: string;
-
-  @ApiProperty()
-  @IsString()
-  price: string;
-
-  @ApiProperty()
-  @IsString()
-  supplier: string;
+  @IsNumber()
+  owner_user_id: number;
 
   @ApiProperty()
   @IsNumber()
-  user: number;
+  owner_sku_id: number;
+
+  @ApiProperty()
+  @IsNumber()
+  qty: number;
+
+  @ApiProperty()
+  @IsNumber()
+  price: number;
+
+  @ApiProperty()
+  @IsNumber()
+  supplier_id: number;
 }

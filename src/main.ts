@@ -8,13 +8,14 @@ import { AppModule } from '@/modules/app/app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     cors: {
-      origin: [
+      /* origin: [
         'http://rotazap.ru',
         'http://rotazap.ru/auth/register',
         'http://www.rotazap.ru',
         'https://www.rotazap.ru',
         'https://rotazap.ru',
-      ],
+      ], */
+      origin: ['http://localhost:5174'],
       credentials: true,
       methods: ['GET', 'POST'],
       allowedHeaders: ['Content-Type'],

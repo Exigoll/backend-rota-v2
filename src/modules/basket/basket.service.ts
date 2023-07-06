@@ -14,11 +14,11 @@ export class BasketService {
   async createBasket(user, dto): Promise<CreateBasketResponse> {
     try {
       const basket = {
-        user: user.id,
+        owner_user_id: user.owner_user_id,
         owner_sku_id: dto.owner_sku_id,
         qty: dto.qty,
         price: dto.price,
-        supplier: dto.supplier,
+        supplier_id: dto.supplier_id,
       };
 
       await this.basketRepository.create(basket);

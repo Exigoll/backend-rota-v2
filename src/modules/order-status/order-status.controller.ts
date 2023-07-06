@@ -14,7 +14,7 @@ export class OrderStatusController {
   @ApiTags('API')
   @ApiResponse({ status: 201, type: OrderStatusResponse })
   @UseGuards(JwtAuthGuard)
-  @Post('create')
+  @Post()
   createOrderStatus(
     @Body() orderStatusDto: OrderStatusDTO,
   ): Promise<OrderStatusResponse> {

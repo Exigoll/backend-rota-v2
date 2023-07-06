@@ -1,29 +1,60 @@
-import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from 'sequelize-typescript';
+
+import { Orders } from '@/modules/orders/models/orders.model';
+import { Sku } from '@/modules/sku/models/sku.model';
+import { Suppliers } from '@/modules/suppliers/models/suppliers.model';
 
 @Table({
   timestamps: false,
 })
 @Table
 export class OrderLines extends Model {
-  @PrimaryKey
-  @Column
-  id: string;
+  @Column({ type: DataType.INTEGER, autoIncrement: true, primaryKey: true })
+  id: number;
 
-  @Column
-  owner_order_id: string;
+  @ForeignKey(() => Orders)
+  @Column({ type: DataType.INTEGER })
+  owner_order_id: number;
 
-  @Column
-  sku_id: string;
+  @BelongsTo(() => Orders, {
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  })
+  order: Orders;
 
-  @Column
-  supplier_id: string;
+  @ForeignKey(() => Sku)
+  @Column({ type: DataType.INTEGER })
+  sku_id: number;
 
-  @Column
-  qty: string;
+  @BelongsTo(() => Sku, {
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  })
+  sku: Sku;
 
-  @Column
-  supplier_price: string;
+  @ForeignKey(() => Suppliers)
+  @Column({ type: DataType.INTEGER })
+  supplier_id: number;
 
-  @Column
-  client_price: string;
+  @BelongsTo(() => Suppliers, {
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  })
+  supplier: Suppliers;
+
+  @Column({ type: DataType.INTEGER })
+  qty: number;
+
+  @Column({ type: DataType.INTEGER })
+  supplier_price: number;
+
+  @Column({ type: DataType.INTEGER })
+  client_price: number;
 }

@@ -1,20 +1,20 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsNumber } from 'class-validator';
 
 export class SupplierOffersDTO {
   @ApiProperty()
-  @IsString()
-  supplier_id: string;
+  @IsNumber()
+  supplier_id: number;
 
   @ApiProperty()
-  @IsString()
-  sku_id: string;
+  @IsNumber()
+  sku_id: number;
 
   @ApiProperty()
-  @IsString()
-  base_price: string;
+  @IsNumber()
+  base_price: number;
 
   @ApiProperty()
-  @IsString()
-  qty: string;
+  @IsNumber()
+  qty: number;
 }

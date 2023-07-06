@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsBoolean, IsNumber } from 'class-validator';
 
 export class SuppliersResponse {
   @ApiProperty()
-  @IsString()
-  id: string;
+  @IsNumber()
+  id: number;
 
   @ApiProperty()
-  @IsString()
+  @IsBoolean()
   stock: boolean;
 }

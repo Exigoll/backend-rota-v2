@@ -1,5 +1,13 @@
-import { Column, ForeignKey, Model, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from 'sequelize-typescript';
 
+import { Sku } from '@/modules/sku/models/sku.model';
 import { User } from '@/modules/users/models/user.model';
 
 @Table({
@@ -8,17 +16,25 @@ import { User } from '@/modules/users/models/user.model';
 @Table
 export class Basket extends Model {
   @ForeignKey(() => User)
-  user: User;
+  @Column({ type: DataType.INTEGER, primaryKey: true })
+  owner_user_id: number;
 
-  @Column
-  owner_sku_id: string;
+  @ForeignKey(() => Sku)
+  @Column({ type: DataType.INTEGER })
+  owner_sku_id: number;
 
-  @Column
-  qty: string;
+  @BelongsTo(() => Sku, {
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  })
+  sku: Sku;
 
-  @Column
-  price: string;
+  @Column({ type: DataType.INTEGER })
+  supplier_id: number;
 
-  @Column
-  supplier: string;
+  @Column({ type: DataType.INTEGER })
+  qty: number;
+
+  @Column({ type: DataType.INTEGER })
+  price: number;
 }

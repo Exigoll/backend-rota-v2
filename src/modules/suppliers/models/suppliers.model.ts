@@ -1,14 +1,12 @@
-import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
 @Table({
   timestamps: false,
 })
-@Table
 export class Suppliers extends Model {
-  @PrimaryKey
-  @Column
-  id: string;
+  @Column({ type: DataType.INTEGER, autoIncrement: true, primaryKey: true })
+  id: number;
 
-  @Column
+  @Column({ type: DataType.BOOLEAN })
   stock: boolean;
 }

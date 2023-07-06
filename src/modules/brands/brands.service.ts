@@ -1,22 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
+import { BrandsDTO } from './dto';
 import { Brands } from './models/brands.model';
-import { BrandResponse } from './response';
+import { BrandsResponse } from './response';
 
 @Injectable()
-export class BrandService {
+export class BrandsService {
   constructor(
     @InjectModel(Brands)
     private readonly brandsRepository: typeof Brands,
   ) {}
 
-  async createBrand(dto): Promise<BrandResponse> {
+  async createBrands(dto: Partial<BrandsDTO>): Promise<BrandsResponse> {
     try {
-      const brand = await this.brandsRepository.create(dto);
+      const data = await this.brandsRepository.create(dto);
       return {
-        id: brand.id,
-        name: brand.name,
+        id: data.id,
+        name: data.name,
       };
     } catch (e) {
       throw new Error(e);
