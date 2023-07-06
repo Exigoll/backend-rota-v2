@@ -1,57 +1,57 @@
 import {
   BelongsTo,
   Column,
+  DataType,
   ForeignKey,
-  HasMany,
   Model,
   Table,
 } from 'sequelize-typescript';
 
-import { Basket } from '@/modules/basket/models/basket.model';
-import { Orders } from '@/modules/orders/models/orders.model';
 import { PriceLists } from '@/modules/price-lists/models/price-lists.model';
 
-@Table
+@Table({
+  timestamps: true,
+  createdAt: 'creator_dt',
+  updatedAt: false,
+})
 export class User extends Model {
-  @Column
+  @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
+  id: number;
+
+  @Column({ type: DataType.STRING })
   email: string;
 
-  @Column
+  @Column({ type: DataType.STRING })
   password: string;
 
-  @Column
+  @Column({ type: DataType.STRING })
   fullName: string;
 
-  @Column
+  @Column({ type: DataType.STRING })
   userName: string;
 
-  @Column
+  @Column({ type: DataType.STRING })
   phoneNumber: string;
 
-  @Column
+  @Column({ type: DataType.STRING })
   address: string;
 
-  @Column
+  @Column({ type: DataType.STRING })
   legalForm: string;
 
-  @Column
+  @Column({ type: DataType.STRING })
   kindOfActivity: string;
 
+  @Column({ type: DataType.DATEONLY, field: 'creator_dt' })
+  creator_dt: Date;
+
   @ForeignKey(() => PriceLists)
-  @Column
-  priceListId: string;
+  @Column({ type: DataType.INTEGER })
+  price_list_id: number;
 
-  @BelongsTo(() => PriceLists)
-  priceList: PriceLists;
-
-  @HasMany(() => Basket, {
+  @BelongsTo(() => PriceLists, {
+    onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
   })
-  basket: Basket[];
-
-  @HasMany(() => Orders, {
-    onUpdate: 'CASCADE',
-  })
-  orders: Orders[];
+  price_lists: PriceLists;
 }

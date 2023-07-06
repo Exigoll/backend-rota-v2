@@ -15,6 +15,7 @@ async function bootstrap() {
         'https://www.rotazap.ru',
         'https://rotazap.ru',
       ],
+      /* origin: ['http://localhost:5174'], */
       credentials: true,
       methods: ['GET', 'POST'],
       allowedHeaders: ['Content-Type'],

@@ -1,16 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsNumber } from 'class-validator';
 
 export class OrderLinesStatusDTO {
   @ApiProperty()
-  @IsString()
-  owner_order_line_id: string;
+  @IsNumber()
+  owner_order_line_id: number;
 
   @ApiProperty()
-  @IsString()
-  owner_status_id: string;
+  @IsNumber()
+  owner_status_id: number;
 
   @ApiProperty()
-  @IsString()
-  qty: string;
+  @IsNumber()
+  qty: number;
 }

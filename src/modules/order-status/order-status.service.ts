@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
+import { OrderStatusDTO } from './dto';
 import { OrderStatus } from './models/order-status.model';
 import { OrderStatusResponse } from './response';
 
@@ -11,7 +12,9 @@ export class OrderStatusService {
     private readonly orderStatusRepository: typeof OrderStatus,
   ) {}
 
-  async createOrderStatus(dto): Promise<OrderStatusResponse> {
+  async createOrderStatus(
+    dto: Partial<OrderStatusDTO>,
+  ): Promise<OrderStatusResponse> {
     try {
       const data = await this.orderStatusRepository.create(dto);
       return {

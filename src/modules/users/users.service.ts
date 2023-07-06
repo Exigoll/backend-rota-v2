@@ -3,11 +3,10 @@ import { InjectModel } from '@nestjs/sequelize';
 import * as bcrypt from 'bcrypt';
 
 import { AuthUserResponse } from '@/modules/auth/response/index';
+import { PriceLists } from '@/modules/price-lists/models/price-lists.model';
 import { TokenService } from '@/modules/token/token.service';
 
 import { AppError } from '@/common/constants/errors';
-
-import { Basket } from '../basket/models/basket.model';
 
 import { CreateUserDTO, UpdatePasswordDTO, UpdateUserDTO } from './dto/index';
 import { User } from './models/user.model';
@@ -32,7 +31,7 @@ export class UsersService {
       return this.userRepository.findOne({
         where: { email: email },
         include: {
-          model: Basket,
+          model: PriceLists,
           required: false,
         },
       });
@@ -46,7 +45,7 @@ export class UsersService {
       return this.userRepository.findOne({
         where: { id },
         include: {
-          model: Basket,
+          model: PriceLists,
           required: false,
         },
       });
@@ -80,7 +79,7 @@ export class UsersService {
         where: { email },
         attributes: { exclude: ['password'] },
         include: {
-          model: Basket,
+          model: PriceLists,
           required: false,
         },
       });

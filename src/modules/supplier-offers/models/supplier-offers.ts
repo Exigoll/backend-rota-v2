@@ -1,20 +1,30 @@
-import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import {
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from 'sequelize-typescript';
+
+import { Sku } from '@/modules/sku/models/sku.model';
+import { Suppliers } from '@/modules/suppliers/models/suppliers.model';
 
 @Table({
   timestamps: false,
 })
 @Table
 export class SupplierOffers extends Model {
-  @PrimaryKey
-  @Column
-  supplier_id: string;
+  @ForeignKey(() => Suppliers)
+  @Column({ type: DataType.INTEGER, primaryKey: true })
+  supplier_id: number;
 
-  @Column
-  sku_id: string;
+  @ForeignKey(() => Sku)
+  @Column({ type: DataType.INTEGER })
+  sku_id: number;
 
-  @Column
-  base_price: string;
+  @Column({ type: DataType.INTEGER })
+  base_price: number;
 
-  @Column
-  qty: string;
+  @Column({ type: DataType.INTEGER })
+  qty: number;
 }

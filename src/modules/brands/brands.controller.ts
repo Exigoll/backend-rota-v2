@@ -3,19 +3,19 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@/guards/jwt-guard';
 
-import { BrandService } from './brands.service';
+import { BrandsService } from './brands.service';
 import { BrandsDTO } from './dto';
-import { BrandResponse } from './response';
+import { BrandsResponse } from './response';
 
 @Controller('brands')
-export class BrandController {
-  constructor(private readonly brandService: BrandService) {}
+export class BrandsController {
+  constructor(private readonly brandsService: BrandsService) {}
 
   @ApiTags('API')
-  @ApiResponse({ status: 201, type: BrandResponse })
+  @ApiResponse({ status: 201, type: BrandsResponse })
   @UseGuards(JwtAuthGuard)
   @Post('create')
-  createBrands(@Body() brandDto: BrandsDTO): Promise<BrandResponse> {
-    return this.brandService.createBrand(brandDto);
+  createBrands(@Body() brandsDto: BrandsDTO): Promise<BrandsResponse> {
+    return this.brandsService.createBrands(brandsDto);
   }
 }

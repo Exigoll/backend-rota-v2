@@ -1,14 +1,28 @@
-import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from 'sequelize-typescript';
+
+import { Sku } from '@/modules/sku/models/sku.model';
 
 @Table({
   timestamps: false,
 })
-@Table
 export class SkuNames extends Model {
-  @PrimaryKey
-  @Column
-  owner_sku_id: string;
+  @ForeignKey(() => Sku)
+  @Column({ type: DataType.INTEGER, primaryKey: true })
+  owner_sku_id: number;
 
-  @Column
+  @BelongsTo(() => Sku, {
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  })
+  sku: Sku;
+
+  @Column({ type: DataType.STRING })
   name: string;
 }

@@ -1,14 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class SkuResponse {
   @ApiProperty()
-  @IsString()
-  id: string;
+  @IsNumber()
+  id: number;
 
   @ApiProperty()
   @IsString()
-  owner_brand_id: string;
+  owner_brand_id: number;
 
   @ApiProperty()
   @IsString()

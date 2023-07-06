@@ -1,20 +1,32 @@
-import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import {
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from 'sequelize-typescript';
+
+import { PriceLists } from '@/modules/price-lists/models/price-lists.model';
+import { Sku } from '@/modules/sku/models/sku.model';
+import { Suppliers } from '@/modules/suppliers/models/suppliers.model';
 
 @Table({
   timestamps: false,
 })
 @Table
 export class OfferPrices extends Model {
-  @PrimaryKey
-  @Column
-  price_list_id: string;
+  @ForeignKey(() => PriceLists)
+  @Column({ type: DataType.INTEGER, primaryKey: true })
+  price_list_id: number;
 
-  @Column
-  supplier_id: string;
+  @ForeignKey(() => Suppliers)
+  @Column({ type: DataType.INTEGER })
+  supplier_id: number;
 
-  @Column
-  sku_id: string;
+  @ForeignKey(() => Sku)
+  @Column({ type: DataType.INTEGER })
+  sku_id: number;
 
-  @Column
-  price: string;
+  @Column({ type: DataType.INTEGER })
+  price: number;
 }

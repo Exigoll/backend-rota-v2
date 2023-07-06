@@ -1,32 +1,32 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsNumber } from 'class-validator';
 
 export class OrderLinesResponse {
   @ApiProperty()
-  @IsString()
-  id: string;
+  @IsNumber()
+  id: number;
 
   @ApiProperty()
-  @IsString()
-  owner_order_id: string;
+  @IsNumber()
+  owner_order_id: number;
 
   @ApiProperty()
-  @IsString()
-  sku_id: string;
+  @IsNumber()
+  sku_id: number;
 
   @ApiProperty()
-  @IsString()
-  supplier_id: string;
+  @IsNumber()
+  supplier_id: number;
 
   @ApiProperty()
-  @IsString()
-  qty: string;
+  @IsNumber()
+  qty: number;
 
   @ApiProperty()
-  @IsString()
-  supplier_price: string;
+  @IsNumber()
+  supplier_price: number;
 
   @ApiProperty()
-  @IsString()
-  client_price: string;
+  @IsNumber()
+  client_price: number;
 }

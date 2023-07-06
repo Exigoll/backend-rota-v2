@@ -16,6 +16,6 @@ export class SkuNamesController {
   @UseGuards(JwtAuthGuard)
   @Post('create')
   createSkuNames(@Body() skuDto: SkuNamesDTO): Promise<SkuNamesResponse> {
-    return this.skuNamesService.createSkuNames(SkuNamesDTO);
+    return this.skuNamesService.createSkuNames(skuDto);
   }
 }
